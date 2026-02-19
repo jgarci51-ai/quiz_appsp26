@@ -12,12 +12,18 @@ class _QuestionsScreenState extends State<QuestionsScreen>{
 
 @override
 Widget build(BuildContext context){
+  // TODO: implement build
     return SizedBox(
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('This is quiz question'),
+          const Text('This is quiz question',
+            style:TextStyle(
+              color: Colors.white,
+              fontSize: 28
+            )
+          ),
         const SizedBox(height: 30),
         ElevatedButton(onPressed: (){}, child: const Text('Answer 1')),
         ElevatedButton(onPressed: (){}, child: const Text('Answer 2')),
