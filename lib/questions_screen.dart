@@ -19,21 +19,26 @@ Widget build(BuildContext context){
   // TODO: implement build
     return SizedBox(
       width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(currentQuestion.question,
-            style:const TextStyle(
-              color: Colors.white,
-              fontSize: 20
-            )
-          ),
-        const SizedBox(height: 30),
-       ...currentQuestion.answers.map((item){
-        return AnswerButton(answerText: item,
-        onTap:(){});
-       } ),
-        ],),
+      child: Container(
+        margin:const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(currentQuestion.question,
+              style:const TextStyle(
+                color: Colors.white,
+                fontSize: 20
+              ),
+              textAlign: TextAlign.center,
+            ),
+          const SizedBox(height: 30),
+         ...currentQuestion.answers.map((item){
+          return AnswerButton(answerText: item,
+          onTap:(){});
+         } ),
+          ],),
+      ),
     );
   }
 }
