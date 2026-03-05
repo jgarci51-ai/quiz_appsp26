@@ -24,7 +24,7 @@ class _QuizState extends State<Quiz> {
         //This is going to change to deal with the answer screen
         // selectedAnswers = [];
         activeScreen = ResultsScreen(
-          chosenAnswers: selectedAnswers,);
+          chooseAnswers: selectedAnswers,);
       });
     }
   }
