@@ -16,25 +16,36 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
   List<String> selectedAnswers = [];
 
-  void chooseAnswer(String answer){
+  // When user selects an answer
+  void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
-    if(selectedAnswers.length == questions.length){
-      //hey were done bro
-      setState((){
-        //This is going to change to deal with the answer screen
-        // selectedAnswers = [];
+
+    if (selectedAnswers.length == questions.length) {
+      setState(() {
         activeScreen = ResultsScreen(
-          chooseAnswers: selectedAnswers,);
+          chooseAnswers: selectedAnswers,
+          onRestart: restartQuiz, // FIXED
+        );
       });
     }
   }
 
+  // Restart Quiz 
+  void restartQuiz() {
+    setState(() {
+      selectedAnswers = [];
+      activeScreen = StartScreen(switchScreen);
+    });
+  }
+
+  // Switch to questions screen
   Widget? activeScreen;
+
   void switchScreen() {
     setState(() {
-      activeScreen = 
-      QuestionsScreen(
-        onSelectedAnswer: chooseAnswer);
+      activeScreen = QuestionsScreen(
+        onSelectedAnswer: chooseAnswer,
+      );
     });
   }
 
@@ -46,11 +57,10 @@ class _QuizState extends State<Quiz> {
 
   @override
   Widget build(BuildContext context) {
-   
     return MaterialApp(
       home: Scaffold(
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
                 Color.fromARGB(255, 63, 8, 165),
